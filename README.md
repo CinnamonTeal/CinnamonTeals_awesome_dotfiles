@@ -13,6 +13,9 @@ The above function means that aliases, functions, and the prompt are defined in
 eponymous dotfiles. This means if something breaks and you want to fix aliases,
 for example, you have to edit the .aliases file. 
 
+If you want to change the colors of your prompt, subl the .bash_prompt and look for
+the PS1 settings at the bottom.
+
 the dotfiles loaded by my .bash_profile are a frankenstein of variables copied 
 from the .bash_profile gifted to me by the Flatiron school, the .bash_profile 
 gifted to me by my friend Patrick, and some of my own modifications. 
