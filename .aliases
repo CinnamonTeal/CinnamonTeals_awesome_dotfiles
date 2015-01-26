@@ -167,6 +167,7 @@ alias json="python -mjson.tool"
 
   # Git
   alias gst="git status"
+  alias gcl="git clone"
   alias gl="git pull"
   alias gp="git push"
   alias gd="git diff | mate"
