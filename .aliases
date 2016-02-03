@@ -1,8 +1,12 @@
-# Easier navigation: .., ..., ...., ....., ~ and -
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+# Easier navigation: .., ..., ~ and -
+alias edit='open -e'                        # Open text file in TextEdit
+alias ..='cd ../'                           # Go back 1 directory level
+alias ...='cd ../../'                       # Go back 2 directory levels
+alias .3='cd ../../../'                     # Go back 3 directory levels
+alias .4='cd ../../../../'                  # Go back 4 directory levels
+alias .5='cd ../../../../../'               # Go back 5 directory levels
+alias .6='cd ../../../../../../'            # Go back 6 directory levels
+
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
@@ -19,12 +23,13 @@ alias m="mate ."
 alias s="subl ."
 alias o="open"
 alias oo="open ."
+alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
+  colorflag="--color"
 else # OS X `ls`
-	colorflag="-G"
+  colorflag="-G"
 fi
 
 # List all files colorized in long format
@@ -136,7 +141,7 @@ alias map="xargs -n1"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
+  alias "$method"="lwp-request -m '$method'"
 done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
@@ -153,8 +158,7 @@ alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resour
 
 #PAWS added 20120615 for JSON pretty print. http://bizorgnet.com/2012/06/14/prettyprint-json-in-terminal.html
 alias json="python -mjson.tool"
-
-
+     
 
 # =========================================================================================
 # ==================== added from .bash_profile_flatiron ==================================
@@ -177,22 +181,67 @@ alias json="python -mjson.tool"
   alias gba="git branch -a"
   alias gcam="git commit -am"
   alias gbb="git branch -b"
+  
+  # =========================================================================================
+  # added by CinnamonTeal:
+  alias gaa="git add ."
+  alias gco="git checkout"
+  alias gcb="git checkout -b"
+  alias gcamf="git commit -am "d^_^b""
+  alias ir="ironboard"
+  alias hb="hub browse"
+  alias r="rspec"
+  alias rff="rspec --fail-fast"
+
+  alias ..f="cd ~/code/flatiron"
+  alias ..c="cd ~/code"
+  alias ..s="cd ~/code/Spry"
+  alias ..cy="cd ~/code/Spry/Cykik"
+  alias ..fj="cd ~/code/flatiron/javascript"
+  
+  alias mig='rake db:migrate && rake db:migrate RAILS_ENV=test' # thanks MingZhang @ http://flounderingincode.com/
+  alias rake:dms="rake db:drop && rake db:migrate && rake db:seed"
+  
+  alias jks="jekyll serve --watch"
+  
+  alias l="ls -la" #thanks Blake41
+
+  
+#   -----------------------------
+#   copied from dmb107@med.miami.edu
+#   -----------------------------
 
 
+# path: Echo all executable Paths
+alias path='echo -e ${PATH//:/\\n}'   
+
+# trash:        Moves a file to the MacOS trash
+trash () { command mv "$@" ~/.Trash ; }     
+
+#   showa: to remind yourself of an alias (given some part of it)
+#   ------------------------------------------------------------
+    showa () { /usr/bin/grep --color=always -i -a1 $@ ~/Library/init/bash/aliases.bash | grep -v '^\s*$' | less -FSRXc ; }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#   extract:  Extract most know archives with one command
+#   ---------------------------------------------------------
+    extract () {
+        if [ -f $1 ] ; then
+          case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)     echo "'$1' cannot be extracted via extract()" ;;
+             esac
+         else
+             echo "'$1' is not a valid file"
+         fi
+    }
