@@ -198,6 +198,8 @@ alias json="python -mjson.tool"
   alias ..s="cd ~/code/Spry"
   alias ..cy="cd ~/code/Spry/Cykik"
   alias ..fj="cd ~/code/flatiron/javascript"
+
+  alias catman="man -P cat"
   
   alias mig='rake db:migrate && rake db:migrate RAILS_ENV=test' # thanks MingZhang @ http://flounderingincode.com/
   alias rake:dms="rake db:drop && rake db:migrate && rake db:seed"
